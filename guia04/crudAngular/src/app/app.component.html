@@ -5,23 +5,32 @@
   }
 </style>
 
+
 <nav class="navbar navbar-dark bg-primary">
   <a class="navbar-brand" href="/">
     Primer Crud Angular
   </a>
 </nav>
+
+<p></p>
+
+
+<! -- CRUD ANGULAR PHP Y MYSQL -->
 <div class="container">
+  <h2>CRUD ANGULAR CON ARREGLOS</h2>
   <div class="row">
     <div class="col-md-8 mt-4">
       <! -- mt-4 espacio en blanco vertical -->
         <ul class="list-group">
-
-          <li *ngFor="let alumno of alumnoArray" class="list-group-item list-group-item-
-  action" (click)="openForEdit(alumno)" [class.active]="alumno == selectedAlumno">
+          <li *ngFor="let alumno of alumnoArray" class="list-group-item list-group-item-action"
+            (click)="openForEdit(alumno)" [class.active]="alumno == selectedAlumno">
             <span class="badge badge-primary">{{alumno.id}}</span>
             - {{alumno.name}}
             - {{alumno.lastname}}
             - {{alumno.age}}
+            - {{alumno.direction}}
+            - {{alumno.tel}}
+            - {{alumno.email}}
           </li>
         </ul>
         <div class="card">
@@ -30,13 +39,22 @@
               <h3>{{selectedAlumno.id == 0 ? "Agregar Nuevo Alumno" : "Actualizar Alumno"}}</h3>
             </div>
             <div class="form-group">
-              <input type="text" [(ngModel)]="selectedAlumno.name" placeholder="name" class="form-control">
+              <input type="text" [(ngModel)]="selectedAlumno.name" placeholder="Nombre" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" [(ngModel)]="selectedAlumno.lastname" placeholder="lastname" class="form-control">
+              <input type="text" [(ngModel)]="selectedAlumno.lastname" placeholder="Apellido" class="form-control">
             </div>
             <div class="form-group">
-              <input type="number" [(ngModel)]="selectedAlumno.age" placeholder="age" class="form-control">
+              <input type="number" [(ngModel)]="selectedAlumno.age" placeholder="Edad" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.direction" placeholder="Dirección" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.tel" placeholder="Teléfono" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedAlumno.email" placeholder="Correo electrónico" class="form-control">
             </div>
             <button (click)="addOrEdit()" class="btn btn-primary btn-space">
               Guardar
@@ -49,7 +67,65 @@
     </div>
     <div class="col-md-4">
       <! -- md-4 espacio en blanco vertical -->
-        <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+        <img width="300" alt="Angular Logo"
+          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
     </div>
   </div>
 </div>
+
+<p><br></p>
+
+<! -- CRUD ANGULAR PHP Y MYSQL -->
+  <div class="container">
+    <h2>CRUD ANGULAR PHP Y MYSQL</h2>
+    <div class="col-md-8 mt-4">
+      <div class="card">
+        <div class="card-body">
+          <h2>Administración de artículos</h2>
+          <table class="table table-hover" *ngIf="hayRegistros(); else sinarticulos">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Proveedor</th>
+                <th>Fabricante</th>
+                <th>Borrar</th>
+                <th>Seleccionar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let art of articulos">
+                <td>{{art.codigo}}</td>
+                <td>{{art.descripcion}}</td>
+                <td>{{art.precio}}</td>
+                <td>{{art.proveedor}}</td>
+                <td>{{art.fabricante}}</td>
+                <td><button (click)="baja(art.codigo)" class="btn btn-danger">Borrar</button></td>
+                <td><button (click)="seleccionar(art.codigo)" class="btn btn-warning">Seleccionar</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #sinarticulos>
+            <p>No hay articulos.</p>
+          </ng-template>
+          <div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="art.descripcion" placeholder="descripcion" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="number" [(ngModel)]="art.precio" placeholder="precio" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="art.proveedor" placeholder="proveedor" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="art.fabricante" placeholder="fabricante" class="form-control" />
+            </div>
+            <button (click)="alta()" *ngIf="art.codigo == 0" class="btn btn-primary btn-space">Agregar</button>
+            <button (click)="modificacion()" *ngIf="art.codigo !== 0" class="btn btn-warning">Modificar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
