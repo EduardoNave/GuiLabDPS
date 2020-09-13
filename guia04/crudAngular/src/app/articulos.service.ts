@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ArticulosService {
-  url = 'http://localhost/Guia4/'; // disponer url de su servidor que tiene las páginas PHP
+  url = 'https://guia4dps08l.webcindario.com/'; // disponer url de su servidor que tiene las páginas PHP
   constructor(private http: HttpClient) { }
   recuperarTodos() {
     return this.http.get(`${this.url}recuperartodos.php`);
