@@ -5,4 +5,3 @@ export class Product {
     location: string;
     price: number;
 }
-
